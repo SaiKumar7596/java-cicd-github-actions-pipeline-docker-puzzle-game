@@ -108,6 +108,19 @@ SonarQube           Maven Build & Deploy          Docker Build & Push
      * Allow **9000** (SonarQube)
      * (For lab/demo you may allow all inbound, but not recommended for prod)
 
+<img width="602" height="273" alt="image" src="https://github.com/user-attachments/assets/b6016edb-f9d3-41fa-b7a2-e392b3363814" />
+
+<img width="602" height="277" alt="image" src="https://github.com/user-attachments/assets/33b37fbc-6f28-4d73-80ac-8cb1e89e5f13" />
+
+<img width="602" height="167" alt="image" src="https://github.com/user-attachments/assets/0a0ff059-70cb-4675-8fdf-29ea4ae8503c" />
+
+<img width="602" height="273" alt="image" src="https://github.com/user-attachments/assets/f1077f97-3ce6-497e-8f12-703d63c72b6c" />
+
+<img width="602" height="160" alt="image" src="https://github.com/user-attachments/assets/2cabae15-959b-48f1-8213-2fc0e25e248e" />
+
+<img width="602" height="297" alt="image" src="https://github.com/user-attachments/assets/cb571aa0-924f-4046-a99e-1db40fdab917" />
+
+
 2. **Create / Download key pair** (e.g. `your-key.pem`).
 
 ---
@@ -117,6 +130,8 @@ SonarQube           Maven Build & Deploy          Docker Build & Push
 ```bash
 ssh -i your-key.pem ubuntu@<EC2_PUBLIC_IP>
 ```
+
+<img width="602" height="204" alt="image" src="https://github.com/user-attachments/assets/53a38d7a-db15-4036-808b-0729163d1c98" />
 
 Update server:
 
@@ -132,6 +147,7 @@ git clone https://github.com/SaiKumar7596/puzzle-game-java
 cd puzzle-game-java
 ```
 
+
 ---
 
 ## 7. Install Docker on EC2
@@ -145,6 +161,11 @@ sudo usermod -aG docker ubuntu
 
 Log out and log in again (or run `newgrp docker`) to apply group changes.
 
+
+<img width="602" height="38" alt="image" src="https://github.com/user-attachments/assets/d3f8eac7-8a35-4aa9-96ec-997091953b86" />
+
+<img width="602" height="83" alt="image" src="https://github.com/user-attachments/assets/fe9b7615-87a9-412c-a05f-37617cd0208d" />
+
 ---
 
 ## 8. Run SonarQube in Docker
@@ -155,11 +176,16 @@ Pull SonarQube image:
 docker pull sonarqube
 ```
 
+<img width="602" height="175" alt="image" src="https://github.com/user-attachments/assets/a16f2654-4fd3-4c43-a854-26a20be50e02" />
+
+
 Run SonarQube container:
 
 ```bash
 docker run -d --name sonarqube -p 9000:9000 sonarqube
 ```
+
+<img width="602" height="81" alt="image" src="https://github.com/user-attachments/assets/01b71991-932a-46dd-8efa-5c4f35069ffa" />
 
 Access in browser:
 
@@ -167,12 +193,18 @@ Access in browser:
 http://<EC2_PUBLIC_IP>:9000
 ```
 
+<img width="602" height="295" alt="image" src="https://github.com/user-attachments/assets/67e40f03-1f8a-46e2-ba12-f5cf0e96c6b3" />
+
 Default login:
 
 * Username: `admin`
 * Password: `admin`
 
 Change the password on first login, then:
+
+
+<img width="602" height="254" alt="image" src="https://github.com/user-attachments/assets/9dde2822-81f4-4715-b033-cb2f9475f545" />
+
 
 * Create a **SonarQube token**
 * Save it (will be used as `SONAR_TOKEN` in GitHub Secrets)
@@ -193,6 +225,11 @@ java -version
 mvn -version
 ```
 
+<img width="602" height="62" alt="image" src="https://github.com/user-attachments/assets/65f7d71b-e88d-4139-9184-7a368762f7ff" />
+
+
+<img width="602" height="43" alt="image" src="https://github.com/user-attachments/assets/8c060f36-8376-42d9-8bf4-0f2f3e63d70e" />
+
 (Optional) Run a local Sonar scan to confirm:
 
 ```bash
@@ -200,6 +237,14 @@ mvn clean install sonar:sonar \
   -Dsonar.host.url=http://<EC2_PUBLIC_IP>:9000 \
   -Dsonar.login=<YOUR_SONAR_TOKEN>
 ```
+
+<img width="602" height="101" alt="image" src="https://github.com/user-attachments/assets/aafb47be-12f6-48c2-8abe-91875b2cfd22" />
+
+
+<img width="602" height="70" alt="image" src="https://github.com/user-attachments/assets/2c710f14-0fa3-4231-bfbe-f441f7f447e6" />
+
+
+<img width="602" height="286" alt="image" src="https://github.com/user-attachments/assets/af2a519c-5604-423f-89db-d6659e35f5dc" />
 
 ---
 
@@ -211,11 +256,16 @@ Pull Nexus:
 docker pull sonatype/nexus3
 ```
 
+
+<img width="602" height="151" alt="image" src="https://github.com/user-attachments/assets/f56b5c62-3a2c-401b-b584-984d3b7fafc0" />
+
 Run Nexus:
 
 ```bash
 docker run -d --name nexus -p 8081:8081 sonatype/nexus3
 ```
+
+<img width="602" height="64" alt="image" src="https://github.com/user-attachments/assets/5893f5a9-445d-4683-8483-dc33cd826be8" />
 
 Access in browser:
 
@@ -223,13 +273,21 @@ Access in browser:
 http://<EC2_PUBLIC_IP>:8081/
 ```
 
+<img width="602" height="243" alt="image" src="https://github.com/user-attachments/assets/9fd58485-f5fb-48ff-b22c-6e03786ade07" />
+
 Get default admin password:
 
 ```bash
 docker exec -it nexus cat /nexus-data/admin.password
 ```
 
+<img width="602" height="114" alt="image" src="https://github.com/user-attachments/assets/aca625ad-1a67-4e0b-a354-63a3626ae872" />
+
 Login → Change password → Create / confirm `maven-releases` repository.
+
+<img width="602" height="277" alt="image" src="https://github.com/user-attachments/assets/8343000d-0f6b-4741-a144-5fe875dd025d" />
+
+<img width="602" height="201" alt="image" src="https://github.com/user-attachments/assets/2749ba1d-8871-4bd1-b0be-2588998660b5" />
 
 ---
 
@@ -249,13 +307,20 @@ Inside your project `pom.xml`, add:
 </distributionManagement>
 ```
 
+<img width="602" height="29" alt="image" src="https://github.com/user-attachments/assets/c33e7059-16fe-400b-97e0-90d392a6f08e" />
+
+
+<img width="602" height="85" alt="image" src="https://github.com/user-attachments/assets/93a46544-4c63-486a-bb7d-60e4f1b1bba9" />
+
 ### Create Maven `settings.xml` (local)
 
 Create or edit:
 
 ```bash
-vi ~/.m2/settings.xml
+vi /etc/maven/settings.xml 
 ```
+
+<img width="602" height="30" alt="image" src="https://github.com/user-attachments/assets/35294fc4-af6b-4789-8929-46b45dd24608" />
 
 Add:
 
@@ -271,6 +336,8 @@ Add:
 </settings>
 ```
 
+<img width="602" height="109" alt="image" src="https://github.com/user-attachments/assets/aa4a769b-ec31-4d8f-bf4a-20804865d9e1" />
+
 ---
 
 ## 12. Test Deploy to Nexus (Local)
@@ -279,11 +346,19 @@ Add:
 mvn clean deploy
 ```
 
+<img width="602" height="120" alt="image" src="https://github.com/user-attachments/assets/02c8558f-34fa-49a1-b428-314dd6c4674b" />
+
+
+<img width="602" height="156" alt="image" src="https://github.com/user-attachments/assets/a228ff32-52b5-4f2c-a546-c4e6d7877765" />
+
+
 Check Nexus:
 
 ```text
 http://<EC2_PUBLIC_IP>:8081/
 ```
+
+<img width="602" height="248" alt="image" src="https://github.com/user-attachments/assets/09249d72-6ce0-4d6b-a847-313723696a33" />
 
 Browse to:
 
@@ -298,6 +373,14 @@ You should see: `puzzle-game-webapp-1.0.war`.
 ## 13. Create Custom Tomcat Docker Image
 
 Create `Dockerfile` in the project root:
+
+
+<img width="602" height="25" alt="image" src="https://github.com/user-attachments/assets/f70a13c0-1252-4ff2-a47b-af82fd3baeb7" />
+
+
+<img width="602" height="77" alt="image" src="https://github.com/user-attachments/assets/4fbf195f-640e-4c66-9d08-2e1e2fcc94c7" />
+
+
 
 ```dockerfile
 # Step 1: Use official Tomcat image with JDK 17
@@ -341,6 +424,11 @@ Build:
 docker build -t pz-tomcat:1.0 .
 ```
 
+<img width="602" height="162" alt="image" src="https://github.com/user-attachments/assets/2c9a6e30-f87c-42b8-8f8f-32f7e695776e" />
+
+
+<img width="602" height="91" alt="image" src="https://github.com/user-attachments/assets/88650f63-7ac5-4a14-8931-1cb0cac14ed8" />
+
 Test run:
 
 ```bash
@@ -362,6 +450,7 @@ Log in:
 ```bash
 docker login
 ```
+
 
 Tag & push:
 
