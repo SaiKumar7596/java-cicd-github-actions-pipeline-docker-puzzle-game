@@ -447,10 +447,18 @@ http://<EC2_PUBLIC_IP>:8080/puzzle-game-webapp/
 
 Log in:
 
+
 ```bash
 docker login
 ```
 
+<img width="602" height="151" alt="image" src="https://github.com/user-attachments/assets/e30d5607-e684-451c-bf98-08096d72bb46" />
+
+
+<img width="602" height="289" alt="image" src="https://github.com/user-attachments/assets/2777fc0b-c1b3-4ea5-97ca-2da2a145c19c" />
+
+
+<img width="602" height="169" alt="image" src="https://github.com/user-attachments/assets/7145ea1c-9368-4871-8579-4041843b0d55" />
 
 Tag & push:
 
@@ -458,6 +466,11 @@ Tag & push:
 docker tag pz-tomcat:1.0 saikumar7596/my-repo:1.0
 docker push saikumar7596/my-repo:1.0
 ```
+
+<img width="602" height="241" alt="image" src="https://github.com/user-attachments/assets/21971376-c5e0-4868-a8e7-82ed65235506" />
+
+
+<img width="602" height="184" alt="image" src="https://github.com/user-attachments/assets/3bea4e04-c5ec-4f9d-8246-56b71733a92b" />
 
 (We will use this repo name in GitHub Actions.)
 
@@ -481,6 +494,9 @@ We now move the **entire pipeline** into **GitHub Actions**:
 
 ---
 
+
+<img width="602" height="214" alt="image" src="https://github.com/user-attachments/assets/bc9bc692-6f29-4bc0-884a-0d1364ad9446" />
+
 ## 16. Required GitHub Secrets
 
 Go to:
@@ -502,6 +518,30 @@ Create these secrets:
 | `TOMCAT_PASS`     | (Optional) Tomcat password  | `admin123`                 |
 
 ---
+
+<img width="602" height="267" alt="image" src="https://github.com/user-attachments/assets/fb938244-c1b4-4f7d-bb65-ef2077a77d40" />
+
+
+
+<img width="602" height="226" alt="image" src="https://github.com/user-attachments/assets/61896a75-c1e5-4817-822f-ba864c416268" />
+
+
+<img width="602" height="208" alt="image" src="https://github.com/user-attachments/assets/4ebbbf2c-ca69-4612-9f18-af297e75f3c1" />
+
+
+<img width="602" height="217" alt="image" src="https://github.com/user-attachments/assets/05807f69-360c-4877-baeb-dddb955a97b0" />
+
+
+<img width="602" height="182" alt="image" src="https://github.com/user-attachments/assets/f02ea5f6-7f14-40d6-a29c-bdb66b493bc3" />
+
+
+<img width="602" height="181" alt="image" src="https://github.com/user-attachments/assets/de1d6fc3-a5b9-4035-bbbc-f308dfbd7c19" />
+
+
+<img width="602" height="236" alt="image" src="https://github.com/user-attachments/assets/3c0183c3-19b0-4f86-b4ae-61acce4a4b42" />
+
+
+<img width="602" height="286" alt="image" src="https://github.com/user-attachments/assets/e641f883-3306-4991-a008-f499d1a27b3c" />
 
 ## 17. GitHub Actions CI/CD Workflow
 
@@ -611,6 +651,7 @@ jobs:
           DOCKER_IMAGE_NAME: ${{ env.DOCKER_IMAGE_NAME }}
 ```
 
+
 ### Workflow Summary
 
 * **Checkout source** from GitHub.
@@ -629,6 +670,11 @@ jobs:
   * Run new Tomcat container on port `8080`.
 
 ---
+
+<img width="602" height="247" alt="image" src="https://github.com/user-attachments/assets/c04ee7e9-ab6f-4963-831d-68bca2041c70" />
+
+
+<img width="602" height="301" alt="image" src="https://github.com/user-attachments/assets/bca619f3-71f0-4c80-b50b-921db3e32d33" />
 
 ## 18. Verification Steps
 
@@ -670,12 +716,8 @@ You should see:
 puzzle-game-webapp-1.0.war
 ```
 
-**Screenshot placeholder:**
+<img width="602" height="172" alt="image" src="https://github.com/user-attachments/assets/fcaf528b-b89a-4bd5-ad07-6724f33b93b1" />
 
-```markdown
-![Nexus - WAR Artifact](images/nexus-war-upload.png)
-*WAR file successfully stored under maven-releases/com/example/puzzle-game-webapp/1.0/.*
-```
 
 ---
 
@@ -692,12 +734,8 @@ You should see tags like:
 * `latest`
 * `<short-commit-sha>` (e.g. `dee5d43`)
 
-**Screenshot placeholder:**
 
-```markdown
-![Docker Hub - Image Tags](images/dockerhub-image-tags.png)
-*Docker image pushed with both latest and commit-specific tags.*
-```
+<img width="602" height="253" alt="image" src="https://github.com/user-attachments/assets/bcd42f2d-4263-4789-9df0-e62d99514270" />
 
 ---
 
@@ -717,6 +755,8 @@ CONTAINER ID   IMAGE                             NAMES
 ...            saikumar7596/my-repo:latest       tomcat
 ```
 
+<img width="602" height="45" alt="image" src="https://github.com/user-attachments/assets/e4d13943-afcf-4bc9-b73e-522f55a2196f" />
+
 And in browser:
 
 ```text
@@ -725,12 +765,8 @@ http://54.81.139.84:8080/
 
 (or `http://54.81.139.84:8080/puzzle-game-webapp/` depending on WAR context path)
 
-**Screenshot placeholder:**
 
-```markdown
-![EC2 - Tomcat Container Running](images/ec2-docker-ps.png)
-*Tomcat container running with the latest Docker image deployed from GitHub Actions.*
-```
+<img width="602" height="135" alt="image" src="https://github.com/user-attachments/assets/9af798c2-0240-4011-9760-2ba3fae44a68" />
 
 ---
 
@@ -794,23 +830,3 @@ http://54.81.139.84:8080/
 > **“I built a complete CI/CD pipeline for a Java web application using GitHub Actions, SonarQube, Nexus, Docker, and Tomcat on AWS EC2.
 > On every push to main, GitHub Actions checks out the code, runs a SonarQube analysis, builds the artifact with Maven, deploys it to a Nexus repository, builds and pushes a Docker image to Docker Hub, and finally connects to an EC2 instance over SSH to deploy the latest container. The entire workflow is driven by GitHub Secrets for SonarQube, Nexus, Docker Hub, and SSH credentials.”**
 
-You can use that as a concise **interview answer** describing this project.
-
----
-
-## 21. Next Steps / Possible Enhancements
-
-* Add **branch protections** & run CI for PRs.
-* Add **staging vs production** environments.
-* Use **GitHub Environments** with approvals for prod deploy.
-* Add automated **tests** and enforce **Quality Gate** from SonarQube in the pipeline.
-
----
-
-```
-
-If you want, next I can:
-
-- Customize the workflow to **multi-job** (build → scan → deploy separated),
-- Or add a **rollback strategy** using previous Docker tags / Nexus artifacts.
-```
