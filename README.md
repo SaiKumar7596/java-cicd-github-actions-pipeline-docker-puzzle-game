@@ -1,5 +1,5 @@
 
-# Puzzle Game CI/CD with GitHub Actions, SonarQube, Nexus, Docker & Tomcat
+# CI/CD with GitHub Actions, SonarQube, Nexus, Docker & Tomcat
 
 This repository demonstrates a **complete CI/CD pipeline** for a Java web application using:
 
